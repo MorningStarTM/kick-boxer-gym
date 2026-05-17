@@ -1,6 +1,6 @@
 # Kick-Boxing RL Agent with SMPL-X Humanoid
 
-Reinforcement learning framework for training a kick-boxing agent using a physics-simulated SMPL-X humanoid character in PyBullet. The pipeline has two phases: (1) pre-train a motion prior from SMPL-X mocap data, then (2) train a PPO agent in a kick-boxing environment that leverages the learned motion prior for natural movement.
+Reinforcement learning framework for training a kick-boxing agent using a physics-simulated SMPL-X humanoid character in PyBullet. 
 
 ---
 
@@ -19,11 +19,8 @@ kick-boxing/
 ├── utils/
 │   ├── config.py                # YAML config loader
 │   ├── math_utils.py            # Quaternion math, COM, rotation utilities
-│   ├── mocap_loader.py          # SMPL-X mocap dataset (PyTorch Dataset)
 │   └── rewards.py               # Multi-component reward function
 ├── scripts/
-│   ├── train.py                 # Main entry point (pretrain + RL)
-│   ├── evaluate.py              # Evaluate trained agent with metrics
 │   └── visualize_urdf.py        # Quick URDF visualization in PyBullet GUI
 ├── logs/                        # TensorBoard logs (auto-created)
 ├── requirements.txt
