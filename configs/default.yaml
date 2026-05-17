@@ -1,0 +1,51 @@
+environment:
+  physics_timestep: 0.002       # 500 Hz physics
+  control_timestep: 0.02        # 50 Hz control (every 10 physics steps)
+  max_episode_steps: 1000
+  gravity: [0, 0, -9.81]
+  ground_friction: 1.0
+  render: false
+
+humanoid:
+  num_joints: 22
+  joint_damping: 0.5
+  max_torque: 200.0
+  initial_height: 0.95
+
+reward:
+  strike_weight: 5.0
+  balance_weight: 2.0
+  energy_weight: -0.01
+  posture_weight: 1.0
+  alive_bonus: 0.5
+  fall_penalty: -10.0
+  target_zones:                  # head, torso, legs
+    head: 3.0
+    torso: 2.0
+    legs: 1.0
+
+pretrain:
+  batch_size: 256
+  learning_rate: 0.0003
+  epochs: 200
+  sequence_length: 64
+  hidden_dim: 512
+  latent_dim: 128
+  mocap_fps: 30
+
+training:
+  algorithm: PPO
+  total_timesteps: 10_000_000
+  learning_rate: 0.0003
+  batch_size: 2048
+  n_steps: 4096
+  n_epochs: 10
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_range: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  max_grad_norm: 0.5
+  n_envs: 8
+  pretrain_weight_init: true
+  tensorboard_log: ./logs
